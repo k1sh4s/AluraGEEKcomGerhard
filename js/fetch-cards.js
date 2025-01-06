@@ -1,3 +1,9 @@
+console.log("fetch-cards.js carregado");
+
+document.addEventListener("DOMContentLoaded", () => {
+    renderCards();  // Chama a função para renderizar os cards
+});
+
 // Cards pré-definidos
 const defaultCards = [
     { id: Date.now() + 1, nome: "Produto 1", valor: "100.00", imagem: "assets/plushee.jpg" },
@@ -13,7 +19,12 @@ const cardsContainer = document.querySelector(".corpo_produtos--card");
 
 // Função global para renderizar os cards na tela
 const renderCards = () => {
+    const cardsContainer = document.getElementById("cards-container");
+    console.log(cardsContainer); // Verifique se está correto
+
     const cards = JSON.parse(localStorage.getItem("cards")) || [];
+    console.log(cards);
+
     cardsContainer.innerHTML = ""; // Limpa o container antes de renderizar
     
     if (cards.length === 0) {
