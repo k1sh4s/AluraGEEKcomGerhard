@@ -26,7 +26,7 @@ document.addEventListener("DOMContentLoaded", () => {
         localStorage.setItem("cards", JSON.stringify(cards));
 
         // Re-renderiza os cards para refletir a adição
-        await renderCards();
+        renderCards();
 
         // Limpar os campos após salvar
         formulario.reset();
@@ -40,6 +40,6 @@ document.addEventListener("DOMContentLoaded", () => {
     // Salvar o produto ao clicar no botão "Guardar"
     guardarBtn.addEventListener("click", async (event) => {
         event.preventDefault();
-        await adicionarProduto();
+        adicionarProduto();
     });
 });

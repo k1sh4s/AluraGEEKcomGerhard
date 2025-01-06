@@ -87,6 +87,11 @@ body {
     font-size: 1rem;
 
     transition: transform 0.5s ease; /* Transição suave para efeito de hover */
+    
+    /* Definindo o tamanho máximo para o card */
+    max-width: 300px; /* Tamanho máximo do card */
+    max-height: 400px; /* Tamanho máximo do card */
+    overflow: hidden; /* Esconde o conteúdo que ultrapassar o limite do card */
 }
 .corpo--card:hover {
     transform: scale(1.15); /* Efeito de aumento no hover */
@@ -190,7 +195,11 @@ body {
 }
 
 .imagem_produto{
-    max-width: 150px;
+    width: 100%; /* Faz a imagem ocupar toda a largura disponível do card */
+    height: auto; /* Ajusta a altura proporcionalmente à largura */
+    max-height: 200px; /* Define um tamanho máximo para a altura da imagem */
+    object-fit: cover; /* Corta a imagem caso ultrapasse os limites definidos */
+    
     border: 0.18rem solid var(--cor-terciaria);
     border-radius: 0.5rem;
 }

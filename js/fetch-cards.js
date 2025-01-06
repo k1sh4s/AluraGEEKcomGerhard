@@ -1,26 +1,24 @@
-document.addEventListener("DOMContentLoaded", () => {
-    const defaultCards = [
-        { id: Date.now() + 1, nome: "Hunter plushee", valor: "100.00", imagem: "assets/plushee.jpg" },
-        { id: Date.now() + 2, nome: "Shanks", valor: "45.00", imagem: "assets/shanks.jpg" },
-    ];
+// Cards pré-definidos
+const defaultCards = [
+    { id: Date.now() + 1, nome: "Produto 1", valor: "100.00", imagem: "assets/plushee.jpg" },
+    { id: Date.now() + 2, nome: "Produto 2", valor: "45.00", imagem: "assets/shanks.jpg" },
+];
 
-    const cardsContainer = document.querySelector(".corpo_produtos--card");
+// Inicializa o localStorage com cards pré-definidos, se vazio
+if (!localStorage.getItem("cards")) {
+    localStorage.setItem("cards", JSON.stringify(defaultCards));
+}
 
-    // Inicializa o localStorage com cards padrão, se vazio
-    if (!localStorage.getItem("cards") || JSON.parse(localStorage.getItem("cards")).length === 0) {
-        localStorage.setItem("cards", JSON.stringify(defaultCards));
-    }
+const cardsContainer = document.querySelector(".corpo_produtos--card");
 
-    // Função para renderizar os cards
-    const renderCards = () => {
-        const cards = JSON.parse(localStorage.getItem("cards")) || [];
-        cardsContainer.innerHTML = ""; // Limpa o container
-
-        if (cards.length === 0) {
-            cardsContainer.innerHTML = `<p style="text-align: center; font-size: 1.25rem; color: grey;">Nenhum produto cadastrado!</p>`;
-            return;
-        }
-
+// Função global para renderizar os cards na tela
+const renderCards = () => {
+    const cards = JSON.parse(localStorage.getItem("cards")) || [];
+    cardsContainer.innerHTML = ""; // Limpa o container antes de renderizar
+    
+    if (cards.length === 0) {
+        cardsContainer.innerHTML = "<p class='mensagem-vazia'>Nenhum produto cadastrado.</p>";
+    } else {
         cards.forEach((card) => {
             const cardElement = document.createElement("div");
             cardElement.classList.add("corpo--card");
@@ -38,18 +36,19 @@ document.addEventListener("DOMContentLoaded", () => {
             `;
             cardsContainer.appendChild(cardElement);
         });
-    };
+    }
+};
 
-    // Evento para remover cards
-    cardsContainer.addEventListener("click", (event) => {
-        if (event.target.closest(".icone_lixo")) {
-            const cardId = parseInt(event.target.closest(".icone_lixo").dataset.id, 10);
-            let cards = JSON.parse(localStorage.getItem("cards")) || [];
-            cards = cards.filter((card) => card.id !== cardId);
-            localStorage.setItem("cards", JSON.stringify(cards));
-            renderCards();
-        }
-    });
-
-    renderCards();
+// Event listener para remover cards
+cardsContainer.addEventListener("click", (event) => {
+    if (event.target.closest(".icone_lixo")) {
+        const cardId = parseInt(event.target.closest(".icone_lixo").dataset.id, 10);
+        let cards = JSON.parse(localStorage.getItem("cards")) || [];
+        cards = cards.filter((card) => card.id !== cardId);
+        localStorage.setItem("cards", JSON.stringify(cards));
+        renderCards();
+    }
 });
+
+// Renderiza os cards ao carregar a página
+document.addEventListener("DOMContentLoaded", renderCards);
