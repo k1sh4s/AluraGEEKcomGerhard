@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/reset.css">
+    <link rel="stylesheet" href="./css/estilos.css">
+    <title>AluraGEEK</title>
+    <link rel="shortcut icon" href="./assets/icon.png" type="image/x-icon">
+</head>
+
+<body>
+    
+    <header class="cabecalho">
+        <h1 class="cabecalho_titulo">AluraGeek</h1>
+        <img class="cabecalho_logo" src="./assets/coracoes.png" alt="logo">
+    </header>
+    <main>
+        <section class="corpo">
+            <div class="corpo_produtos">
+                <h1>MEUS PRODUTOS:</h1>
+                <div class="corpo_produtos--card">
+                    <!--
+                    <div class="corpo--card">
+                        <img class="imagem_produto" src="assets/action-figure.png" alt="Imagem do produto">
+                        <div class="card_container--info">
+                            <p>Nome do produto</p>
+                            <div class="card_container--value">
+                                <p>$ XX.XX</p>
+                                <button class="icone_lixo">
+                                    <img src="assets/icone-lixo.png" alt="Ícone de lixeira">
+                                </button>
+                            </div>                        
+                        </div> 
+                    </div> 
+                    -->
+                </div>
+            </div>
+            <div class="corpo_adicionar">
+                <h1>ADICIONAR PRODUTO:</h1>
+                <div class="corpo_adicionar--formulario">
+                    <form class="formulario_campo--inputs">
+                        <input id="nome" class="formulario_campo" placeholder="Nome...">
+                        <input id="valor" class="formulario_campo" placeholder="Valor...">
+                        <input id="imagem" class="formulario_campo" placeholder="Url da imagem...">
+                    </form>
+                    <div class="formulario_campo--botoes">
+                        <button type="submit" class="formulario_botao--guardar">Guardar</button>
+                        <button type="reset" class="formulario_botao--limpar">Limpar</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer class="rodape">
+        <div class="rodape_alura">
+            <h1 class="cabecalho_titulo">AluraGeek</h1>
+            <img class="cabecalho_logo" src="assets/coracoes.png" alt="logo">
+        </div>
+        <div class="rodape_detalhe">
+            <p>Desenvolvido por Gerhard Eidenberger</p>
+            <p>Alura Latam - 2024</p>
+        </div>
+    </footer>
+
+    <script src="./js/fetch-cards.js" defer></script>
+    <script src="./js/adicionar-produto.js" defer></script>
+
+    
+</body>
+
+</html>
